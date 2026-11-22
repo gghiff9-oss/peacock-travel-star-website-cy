@@ -77,16 +77,6 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
-            <li className="pt-3">
-              <a
-                href={whatsappLink('Halo Peacock Travel Star, saya ingin konsultasi paket tour.')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 items-center justify-center rounded-md bg-gold text-sm font-semibold text-navy"
-              >
-                Konsultasi via WhatsApp
-              </a>
-            </li>
           </ul>
         </nav>
       )}
