@@ -4,7 +4,7 @@ import { whatsappLink } from '@/lib/format'
 export function WhatsAppButton() {
   return (
     <a
-      href={whatsappLink('Halo Peacock Travel Star, saya ingin bertanya tentang paket tour.')}
+      href={whatsappLink('Halo Cliffton , saya ingin bertanya tentang paket tour.')}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat WhatsApp dengan Peacock Travel Star"
