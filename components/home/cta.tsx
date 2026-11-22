@@ -17,7 +17,7 @@ export function Cta() {
             Jelajahi Paket
           </Link>
           <a
-            href={whatsappLink('Halo Peacock Travel Star, saya ingin merencanakan perjalanan.')}
+            href={whatsappLink('Halo Cliffton, saya ingin merencanakan perjalanan.')}
             target="_blank"
             rel="noopener noreferrer"
             className={goldButtonClass}
