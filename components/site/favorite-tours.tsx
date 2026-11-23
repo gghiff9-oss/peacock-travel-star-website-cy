@@ -61,7 +61,7 @@ export function FavoriteTours({ tours }: { tours: Tour[] }) {
           className="group overflow-hidden rounded-xl border border-border bg-card"
         >
           <Link
-            href={/paket/${tour.slug}}
+            href={`/paket/${tour.slug}`}
             className="relative block aspect-[4/3] overflow-hidden"
           >
             <Image
