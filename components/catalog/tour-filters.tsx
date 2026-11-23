@@ -60,7 +60,7 @@ export function TourFilters() {
     else params.delete(name)
 
     const query = params.toString()
-    const url = query ? ${pathname}?${query} : pathname
+    const url = query ? `${pathname}?${query}` : pathname
 
     startTransition(() => {
       router.replace(url, { scroll: false })
