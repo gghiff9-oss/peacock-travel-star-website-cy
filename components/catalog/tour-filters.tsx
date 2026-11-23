@@ -56,11 +56,16 @@ export function TourFilters() {
   function update(name: string, value: string) {
     const params = new URLSearchParams(searchParams.toString())
 
-    if (value) params.set(name, value)
-    else params.delete(name)
+    if (value) {
+      params.set(name, value)
+    } else {
+      params.delete(name)
+    }
 
     const query = params.toString()
-    const url = query ? `${pathname}?${query}` : pathname
+    const url = query
+      ? pathname + '?' + query
+      : pathname
 
     startTransition(() => {
       router.replace(url, { scroll: false })
@@ -72,10 +77,18 @@ export function TourFilters() {
     params.delete('q')
 
     const query = params.toString()
-    const url = query ? `${pathname}?${query}` : pathname
+    const url = query
+      ? pathname + '?' + query
+      : pathname
 
     startTransition(() => {
       router.replace(url, { scroll: false })
+    })
+  }
+
+  function resetFilters() {
+    startTransition(() => {
+      router.replace(pathname, { scroll: false })
     })
   }
 
@@ -85,15 +98,20 @@ export function TourFilters() {
       aria-label="Filter paket wisata"
       onSubmit={(e) => {
         e.preventDefault()
+
         const formData = new FormData(e.currentTarget)
         const q = formData.get('q')?.toString() ?? ''
+
         update('q', q.trim())
       }}
       className="flex flex-col gap-5 rounded-xl border border-border bg-card p-5 shadow-sm md:p-6"
       data-pending={isPending ? '' : undefined}
     >
       <div className="flex items-center gap-2 text-sm font-semibold text-navy">
-        <SlidersHorizontal className="size-4 text-gold" aria-hidden="true" />
+        <SlidersHorizontal
+          className="size-4 text-gold"
+          aria-hidden="true"
+        />
         Smart Search & Filter
       </div>
 
@@ -128,7 +146,7 @@ export function TourFilters() {
             onClick={clearSearch}
             className="flex items-center gap-1 text-left text-xs text-muted-foreground hover:text-gold"
           >
-            <X className="size-3" />
+            <X className="size-3" aria-hidden="true" />
             Hapus pencarian
           </button>
         )}
@@ -136,13 +154,19 @@ export function TourFilters() {
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
         {SELECTS.map((select) => (
-          <div key={select.name} className="flex flex-col gap-2">
-            <label htmlFor={filter-${select.name}} className={labelClass}>
+          <div
+            key={select.name}
+            className="flex flex-col gap-2"
+          >
+            <label
+              htmlFor={'filter-' + select.name}
+              className={labelClass}
+            >
               {select.label}
             </label>
 
             <select
-              id={filter-${select.name}}
+              id={'filter-' + select.name}
               name={select.name}
               value={searchParams.get(select.name) ?? ''}
               onChange={(e) => update(select.name, e.target.value)}
@@ -161,9 +185,7 @@ export function TourFilters() {
       {searchParams.toString() && (
         <button
           type="button"
-          onClick={() =>
-            startTransition(() => router.replace(pathname, { scroll: false }))
-          }
+          onClick={resetFilters}
           className="text-left text-sm font-medium text-navy underline underline-offset-4 hover:text-gold"
         >
           Reset semua filter
