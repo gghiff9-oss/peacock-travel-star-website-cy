@@ -66,7 +66,7 @@ export function FavoriteTours({ tours }: { tours: Tour[] }) {
           >
             <Image
               src={tour.image_url || '/placeholder.jpg'}
-              alt={Pemandangan ${tour.destination}}
+              alt={`Pemandangan ${tour.destination}`}
               fill
               sizes="(min-width: 1024px) 33vw, 50vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
