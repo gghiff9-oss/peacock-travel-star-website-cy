@@ -47,14 +47,17 @@ export async function createBooking(_prev: BookingState, formData: FormData): Pr
 
   const supabase = await createClient()
   const { error } = await supabase.from('bookings').insert({
-    tour_id: tourId,
-    full_name: fullName,
-    email,
-    phone,
-    departure_date: departureDate,
-    participants,
-    notes: notes || null,
-  })
+  tour_id: tourId,
+  customer_name: fullName,
+  email,
+  whatsapp: phone,
+  travel_date: departureDate,
+  participants,
+  notes: notes || null,
+  payment_status: 'unpaid',
+  payment_method: null,
+  payment_proof_url: null,
+})
 
   if (error) {
     console.error('[booking] insert failed:', error.message)
