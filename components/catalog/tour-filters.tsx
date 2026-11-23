@@ -55,19 +55,27 @@ export function TourFilters() {
 
   function update(name: string, value: string) {
     const params = new URLSearchParams(searchParams.toString())
+
     if (value) params.set(name, value)
     else params.delete(name)
 
+    const query = params.toString()
+    const url = query ? ${pathname}?${query} : pathname
+
     startTransition(() => {
-      router.replace(${pathname}?${params.toString()}, { scroll: false })
+      router.replace(url, { scroll: false })
     })
   }
 
   function clearSearch() {
     const params = new URLSearchParams(searchParams.toString())
     params.delete('q')
+
+    const query = params.toString()
+    const url = query ? ${pathname}?${query} : pathname
+
     startTransition(() => {
-      router.replace(${pathname}?${params.toString()}, { scroll: false })
+      router.replace(url, { scroll: false })
     })
   }
 
@@ -77,7 +85,8 @@ export function TourFilters() {
       aria-label="Filter paket wisata"
       onSubmit={(e) => {
         e.preventDefault()
-        const q = new FormData(e.currentTarget).get('q')?.toString() ?? ''
+        const formData = new FormData(e.currentTarget)
+        const q = formData.get('q')?.toString() ?? ''
         update('q', q.trim())
       }}
       className="flex flex-col gap-5 rounded-xl border border-border bg-card p-5 shadow-sm md:p-6"
@@ -131,6 +140,7 @@ export function TourFilters() {
             <label htmlFor={filter-${select.name}} className={labelClass}>
               {select.label}
             </label>
+
             <select
               id={filter-${select.name}}
               name={select.name}
@@ -161,4 +171,5 @@ export function TourFilters() {
       )}
     </form>
   )
+}
 }
