@@ -9,10 +9,10 @@ export function TourCard({ tour }: { tour: Tour }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-shadow hover:shadow-xl hover:shadow-navy/10">
       <div className="relative">
-        <Link href={/paket/${tour.slug}} className="relative block aspect-[4/3] overflow-hidden">
+        <Link href={`/paket/${tour.slug}`} className="relative block aspect-[4/3] overflow-hidden">
           <Image
             src={tour.image_url || '/placeholder.jpg'}
-            alt={Pemandangan ${tour.destination}}
+            alt={`Pemandangan ${tour.destination}`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -32,7 +32,7 @@ export function TourCard({ tour }: { tour: Tour }) {
             {tour.destination}
           </p>
           <h3 className="text-xl font-semibold text-navy">
-            <Link href={/paket/${tour.slug}} className="hover:text-gold">
+            <Link href={`/paket/${tour.slug}`} className="hover:text-gold">
               {tour.title}
             </Link>
           </h3>
