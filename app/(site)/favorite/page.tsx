@@ -62,7 +62,7 @@ export default function FavoritePage() {
               className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-5"
             >
               <Link
-                href={/paket/${slug}}
+                href={`/paket/${slug}`}
                 className="break-all font-semibold text-navy hover:text-gold"
               >
                 Paket {slug.replaceAll('-', ' ')}
