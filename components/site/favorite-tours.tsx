@@ -80,7 +80,7 @@ export function FavoriteTours({ tours }: { tours: Tour[] }) {
             </p>
 
             <Link
-              href={/paket/${tour.slug}}
+              href={`/paket/${tour.slug}`}
               className="text-lg font-semibold text-navy hover:text-gold"
             >
               {tour.title}
